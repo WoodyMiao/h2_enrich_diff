@@ -63,7 +63,7 @@ def read_annotate_chr(c):
         annot = pd.read_csv(f'{x}{c}.annot.gz', sep='\t').iloc[:, 4:]
         annot_list.append(annot)
     annot = pd.concat(annot_list, axis=1)
-    maf = pd.read_csv(f'{args.frqfile_chr}{c}.frq', sep='\s+').MAF
+    maf = pd.read_csv(f'{args.frqfile_chr}{c}.frq', sep=r'\s+').MAF
     annot = annot[(maf >= 0.05)]
     n_snps_chr = annot.shape[0]
     all_sum_chr = annot.sum()
